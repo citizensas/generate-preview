@@ -3,11 +3,11 @@
   "version": "0.0.0",
   "description": "Get a preview from a git branch before publishing your npm package",
   "main": "index.js",
-  "bin": {  
+  "bin": {
     "generate-preview": "index.js"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "echo \"Sorry: no test specified\" && exit 0",
     "precommit": "pretty-quick --staged"
   },
   "repository": {
