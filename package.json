@@ -1,0 +1,27 @@
+{
+  "name": "generate-preview",
+  "version": "0.0.0",
+  "description": "",
+  "main": "index.js",
+  "bin": {  
+    "generate-preview": "index.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "precommit": "pretty-quick --staged"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@gitlab.workfront.tech:sassounderderian/generate-preview.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "del": "^3.0.0",
+    "simple-git": "^1.95.1",
+    "tar": "^4.4.4"
+  },
+  "devDependencies": {
+    "prettier": "1.13.4"
+  }
+}
