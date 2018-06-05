@@ -1,27 +1,33 @@
 {
-  "name": "generate-preview",
-  "version": "1.0.0",
-  "description": "Get a preview from a git branch before publishing your npm package",
-  "main": "index.js",
-  "bin": {
-    "generate-preview": "index.js"
-  },
-  "scripts": {
-    "test": "echo \"Sorry: no test specified\" && exit 0",
-    "precommit": "pretty-quick --staged"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git@gitlab.workfront.tech:sassounderderian/generate-preview.git"
-  },
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "del": "^3.0.0",
-    "simple-git": "^1.95.1",
-    "tar": "^4.4.4"
-  },
-  "devDependencies": {
-    "prettier": "1.13.4"
-  }
+    "name": "generate-preview",
+    "version": "1.0.0",
+    "description": "Get a preview from a git branch before publishing your npm package",
+    "main": "index.js",
+    "bin": {
+        "generate-preview": "index.js"
+    },
+    "scripts": {
+        "test": "echo \"Sorry: no test specified\" && exit 0",
+        "precommit": "pretty-quick --staged"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/citizensas/generate-preview.git"
+    },
+    "author": "Sassoun Derderian",
+    "bugs": {
+        "url": "https://github.com/citizensas/generate-preview/issues"
+    },
+    "homepage": "https://github.com/citizensas/generate-preview#readme",
+    "license": "MIT",
+    "dependencies": {
+        "del": "^3.0.0",
+        "simple-git": "^1.95.1",
+        "tar": "^4.4.4"
+    },
+    "devDependencies": {
+        "husky": "^0.14.3",
+        "prettier": "1.13.4",
+        "pretty-quick": "^1.6.0"
+    }
 }
