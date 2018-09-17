@@ -21,10 +21,10 @@
     "homepage": "https://github.com/citizensas/generate-preview#readme",
     "license": "MIT",
     "dependencies": {
-        "del": "^3.0.0",
-        "git-url-parse": "^9.0.1",
-        "simple-git": "^1.95.1",
-        "tar": "^4.4.4"
+        "del": "3.0.0",
+        "git-url-parse": "9.0.1",
+        "simple-git": "1.98.0",
+        "tar": "4.4.4"
     },
     "devDependencies": {
         "husky": "^0.14.3",
@@ -33,6 +33,7 @@
     },
     "engines": {
         "node": ">=6",
-        "npm": ">=5.2"
+        "npm": ">=5.2",
+        "git": ">=2.7.0"
     }
 }
