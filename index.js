@@ -13,4 +13,6 @@ program
 
 program.parse(process.argv)
 
-generatePreview(program)
+generatePreview({
+    remoteName: program.remote
+})
