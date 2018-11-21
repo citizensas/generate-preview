@@ -21,7 +21,8 @@
     "homepage": "https://github.com/citizensas/generate-preview#readme",
     "license": "MIT",
     "dependencies": {
-        "del": "3.0.0",
+        "commander": "^2.19.0",
+        "del": "^3.0.0",
         "git-url-parse": "^11.1.1",
         "simple-git": "^1.107.0",
         "tar": "^4.4.8"
