@@ -25,7 +25,8 @@
         "del": "^3.0.0",
         "git-url-parse": "^11.1.1",
         "simple-git": "^1.107.0",
-        "tar": "^4.4.8"
+        "tar": "^4.4.8",
+        "tempy": "0.3.0"
     },
     "devDependencies": {
         "husky": "^1.2.0",
