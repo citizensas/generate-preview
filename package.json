@@ -22,11 +22,13 @@
     "license": "MIT",
     "dependencies": {
         "commander": "^2.19.0",
-        "del": "^3.0.0",
         "git-url-parse": "^11.1.1",
+        "ora": "^3.4.0",
+        "rimraf": "^2.6.3",
+        "semver": "^6.0.0",
         "simple-git": "^1.107.0",
         "tar": "^4.4.8",
-        "tempy": "0.3.0"
+        "tempy": "^0.3.0"
     },
     "devDependencies": {
         "husky": "^1.2.0",
