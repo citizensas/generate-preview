@@ -12,9 +12,11 @@ program
     .version(packageJson.version)
     .name('npx generate-preview')
     .option('-r, --remote [name]', 'git remote name to use', REMOTE_NAME)
+    .option('-p, --protocol [protocol]', 'git protocol (i.e. git+ssh, https)', 'git+ssh')
 
 program.parse(process.argv)
 
 generatePreview({
-    remoteName: program.remote
+    remoteName: program.remote,
+    protocol: program.protocol
 })
