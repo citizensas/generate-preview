@@ -12,7 +12,8 @@
     "scripts": {
         "build": "tsc",
         "test": "echo \"Sorry: no test specified\" && exit 0",
-        "precommit": "pretty-quick --staged"
+        "precommit": "pretty-quick --staged",
+        "prepublishOnly": "npm run build"
     },
     "repository": {
         "type": "git",
