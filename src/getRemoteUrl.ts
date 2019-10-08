@@ -1,18 +1,20 @@
-const gitP = require('simple-git/promise')
-const GitUrlParse = require('git-url-parse')
-const Ora = require('ora')
+import * as gitP from 'simple-git/promise'
+import * as GitUrlParse from 'git-url-parse'
+import * as ora from 'ora'
+import {MODULE_DIR} from './constants'
+import {RemoteWithRefs} from 'simple-git/typings/response'
+import {getFlags} from './cliFlags'
 
-const constants = require('./constants')
-const moduleGit = gitP(constants.moduleDir)
-
-module.exports = function(remoteName, protocol) {
-    const spinner = new Ora()
-    spinner.start('Getting remote url')
+export function getRemoteUrl() {
+    const {remoteName, protocol, verbose} = getFlags()
+    const spinner = ora()
+    const moduleGit = gitP(MODULE_DIR)
+    verbose && spinner.start('Getting remote url')
     return moduleGit
         .getRemotes(true)
         .then(
             remotes =>
-                new Promise((resolve, reject) => {
+                new Promise<RemoteWithRefs>((resolve, reject) => {
                     const remoteFound = remotes.some(remote => {
                         if (remote.name === remoteName) {
                             resolve(remote)
@@ -27,10 +29,11 @@ module.exports = function(remoteName, protocol) {
         )
         .then(remote => {
             const remoteUrl = GitUrlParse(remote.refs.fetch).toString(protocol)
-            spinner.succeed(`Remote URL for ${remoteName} is ${remoteUrl}`)
+            verbose && spinner.succeed(`Remote URL for ${remoteName} is ${remoteUrl}`)
             return remoteUrl
         })
         .catch(err => {
-            spinner.fail(err)
+            verbose && spinner.fail(err)
+            throw err
         })
 }

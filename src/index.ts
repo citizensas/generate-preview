@@ -1,22 +1,20 @@
 #! /usr/bin/env node
 
-const gitP = require('simple-git/promise')
-const semver = require('semver')
-const generatePreview = require('./lib/generate-preview')
-const packageJson = require('./package')
-const program = require('commander')
-
-const REMOTE_NAME = 'origin'
+import * as program from 'commander'
+import {PACKAGE_JSON, REMOTE_NAME} from './constants'
+import {generatePreview} from './generate-preview'
 
 program
-    .version(packageJson.version)
+    .version(PACKAGE_JSON.version)
     .name('npx generate-preview')
     .option('-r, --remote [name]', 'git remote name to use', REMOTE_NAME)
     .option('-p, --protocol [protocol]', 'git protocol (i.e. git+ssh, https)', 'git+ssh')
+    .option('--verbose', 'prints higher level of logs')
 
 program.parse(process.argv)
 
 generatePreview({
     remoteName: program.remote,
-    protocol: program.protocol
+    protocol: program.protocol,
+    verbose: !!program.verbose
 })

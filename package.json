@@ -2,11 +2,15 @@
     "name": "generate-preview",
     "version": "2.0.0",
     "description": "Get a preview from a git branch before publishing your npm package",
-    "main": "index.js",
+    "main": "dist/index.js",
+    "files": [
+        "dist"
+    ],
     "bin": {
-        "generate-preview": "index.js"
+        "generate-preview": "dist/index.js"
     },
     "scripts": {
+        "build": "tsc",
         "test": "echo \"Sorry: no test specified\" && exit 0",
         "precommit": "pretty-quick --staged"
     },
@@ -25,15 +29,19 @@
         "git-url-parse": "^11.1.1",
         "ora": "^3.4.0",
         "rimraf": "^2.6.3",
-        "semver": "^6.0.0",
-        "simple-git": "^1.107.0",
+        "simple-git": "^1.126.0",
         "tar": "^4.4.8",
         "tempy": "^0.3.0"
     },
     "devDependencies": {
+        "@types/git-url-parse": "^9.0.0",
+        "@types/node": "^12.7.11",
+        "@types/rimraf": "^2.0.2",
+        "@types/tar": "^4.0.3",
         "husky": "^1.2.0",
         "prettier": "^1.15.2",
-        "pretty-quick": "^1.6.0"
+        "pretty-quick": "^1.6.0",
+        "typescript": "^3.6.3"
     },
     "engines": {
         "node": ">=8",
