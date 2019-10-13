@@ -8,7 +8,7 @@ export function npmPack() {
     const spinner = ora()
     verbose && spinner.start(`Packing ${PACKAGE_JSON.name}`)
     return new Promise<string>((resolve, reject) =>
-        child_process.exec(`npm pack | tail -1`, {cwd: MODULE_DIR}, function(err, stdout) {
+        child_process.exec(`npm pack`, {cwd: MODULE_DIR}, function(err, stdout) {
             if (err) {
                 verbose && spinner.fail(err.toString())
                 reject(err)

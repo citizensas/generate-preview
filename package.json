@@ -26,13 +26,13 @@
     "homepage": "https://github.com/citizensas/generate-preview#readme",
     "license": "MIT",
     "dependencies": {
-        "commander": "^2.19.0",
-        "git-url-parse": "^11.1.1",
-        "ora": "^3.4.0",
-        "rimraf": "^2.6.3",
-        "simple-git": "^1.126.0",
-        "tar": "^4.4.8",
-        "tempy": "^0.3.0"
+        "commander": "2.20.1",
+        "git-url-parse": "11.1.2",
+        "ora": "3.4.0",
+        "rimraf": "2.7.1",
+        "simple-git": "1.126.0",
+        "tar": "4.4.13",
+        "tempy": "0.3.0"
     },
     "devDependencies": {
         "@types/git-url-parse": "^9.0.0",
