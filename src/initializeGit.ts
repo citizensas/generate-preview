@@ -34,7 +34,8 @@ export function initializeGit(distBranchName: string, remoteUrl: string) {
                     .fetch(remoteName, distBranchName)
                     .then(() => {
                         verbose && spinner.start('Fetching existing branch')
-                        git.checkout(`${remoteName}/${distBranchName}`)
+                        return git
+                            .checkout(`${remoteName}/${distBranchName}`)
                             .then(() => verbose && spinner.start('Prepare for staging'))
                             .then(() => git.raw(['rm', '.', '-r']))
                             .then(() => verbose && spinner.succeed())
