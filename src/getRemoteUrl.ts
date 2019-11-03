@@ -1,15 +1,14 @@
 import * as gitP from 'simple-git/promise'
 import * as GitUrlParse from 'git-url-parse'
-import * as ora from 'ora'
 import {MODULE_DIR} from './constants'
 import {RemoteWithRefs} from 'simple-git/typings/response'
 import {getFlags} from './cliFlags'
+import {logger} from './logger'
 
 export function getRemoteUrl() {
-    const {remoteName, protocol, verbose} = getFlags()
-    const spinner = ora()
+    const {remoteName, protocol} = getFlags()
     const moduleGit = gitP(MODULE_DIR)
-    verbose && spinner.start('Getting remote url')
+    logger.verbose('Getting remote url')
     return moduleGit
         .getRemotes(true)
         .then(
@@ -29,11 +28,7 @@ export function getRemoteUrl() {
         )
         .then(remote => {
             const remoteUrl = GitUrlParse(remote.refs.fetch).toString(protocol)
-            verbose && spinner.succeed(`Remote URL for ${remoteName} is ${remoteUrl}`)
+            logger.verbose(`Remote URL for ${remoteName} is ${remoteUrl}`)
             return remoteUrl
-        })
-        .catch(err => {
-            verbose && spinner.fail(err)
-            throw err
         })
 }
