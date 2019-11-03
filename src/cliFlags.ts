@@ -1,5 +1,4 @@
 export interface IFlags {
-    verbose: boolean
     remoteName: string
     protocol: string
 }

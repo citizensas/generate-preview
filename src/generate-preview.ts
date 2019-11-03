@@ -1,7 +1,6 @@
 import {MODULE_DIR, TMP_DIR} from './constants'
 
 import * as path from 'path'
-import * as ora from 'ora'
 
 import {getBranchName} from './getBranchName'
 import {getRemoteUrl} from './getRemoteUrl'
@@ -11,8 +10,7 @@ import {unpack} from './unpack'
 import {pushToRemote} from './pushToRemote'
 import {cleanup} from './cleanup'
 import {IFlags, setFlags} from './cliFlags'
-
-const spinner = ora()
+import {logger} from './logger'
 
 export function generatePreview(flags: IFlags) {
     setFlags(flags)
@@ -35,18 +33,18 @@ export function generatePreview(flags: IFlags) {
                     })
                 )
         })
-        .then(res => {
+        .then(res =>
             cleanup(res.pathsToRemove).then(() => {
-                spinner.info(
+                logger.info(
                     `Now you can install generated URL in you module using Yarn or NPM. Just run the following command.`
                 )
                 console.log(`npm install ${res.remoteUrl}#${res.distBranchName}`)
                 console.log(' OR ')
                 console.log(`yarn add ${res.remoteUrl}#${res.distBranchName}`)
             })
-        })
+        )
         .catch(err => {
-            console.error(err)
+            logger.error(err)
             process.exit(1)
         })
 }
