@@ -5,7 +5,10 @@ import {logger} from './logger'
 export function npmPack() {
     logger.verbose(`Packing ${PACKAGE_JSON.name}`)
     return new Promise<string>((resolve, reject) =>
-        child_process.exec(`npm pack`, {cwd: MODULE_DIR}, function(err, stdout) {
+        child_process.exec(`npm_config_loglevel=silent npm pack`, {cwd: MODULE_DIR, maxBuffer: 1024 * 500}, function(
+            err,
+            stdout
+        ) {
             if (err) {
                 reject(err)
             } else {
