@@ -1,6 +1,6 @@
 {
     "name": "generate-preview",
-    "version": "2.2.0",
+    "version": "2.2.1",
     "description": "Get a preview from a git branch before publishing your npm package",
     "main": "dist/index.js",
     "files": [
