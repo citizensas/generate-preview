@@ -22,4 +22,5 @@ Options:
   -r, --remote [name]       git remote name to use (default: "origin")
   -p, --protocol [protocol] git protocol (i.e. git+ssh, https) (default: "git+ssh")
   -h, --help                output usage information
+  --token                   git user token for remote authentication
 ```

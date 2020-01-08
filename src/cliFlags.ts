@@ -1,6 +1,7 @@
 export interface IFlags {
     remoteName: string
     protocol: string
+    token: string
 }
 
 let flags: IFlags
