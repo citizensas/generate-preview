@@ -11,21 +11,13 @@ export function getRemoteUrl() {
     logger.verbose('Getting remote url')
     return moduleGit
         .getRemotes(true)
-        .then(
-            remotes =>
-                new Promise<RemoteWithRefs>((resolve, reject) => {
-                    const remoteFound = remotes.some(remote => {
-                        if (remote.name === remoteName) {
-                            resolve(remote)
-                            return true
-                        }
-                        return false
-                    })
-                    if (!remoteFound) {
-                        reject(`Remote "${remoteName}" not found.`)
-                    }
-                })
-        )
+        .then(remotes => {
+            const remoteFound = remotes.find(remote => remote.name === remoteName)
+            if (remoteFound) {
+                return remoteFound
+            }
+            throw `Remote "${remoteName}" not found.`
+        })
         .then(remote => {
             const parsedUrl = GitUrlParse(remote.refs.fetch)
             let remoteUrl
@@ -35,8 +27,9 @@ export function getRemoteUrl() {
                 protocol === REMOTE_URL_TYPES.SSH_GIT
             ) {
                 parsedUrl.user = ''
-                remoteUrl = parsedUrl.toString(protocol)
             }
+            remoteUrl = parsedUrl.toString(protocol)
+
             if (token) {
                 parsedUrl.token = token
                 remoteUrl = parsedUrl.toString(REMOTE_URL_TYPES.HTTPS)
