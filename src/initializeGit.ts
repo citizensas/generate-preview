@@ -1,4 +1,3 @@
-import * as GitUrlParse from 'git-url-parse'
 import * as fs from 'fs'
 import * as gitP from 'simple-git/promise'
 import {TMP_PACKAGE_DIR} from './constants'
@@ -18,10 +17,7 @@ function createTempDirectory(dir: string) {
 }
 
 export function initializeGit(distBranchName: string, remoteUrl: string) {
-    const {remoteName, token, protocol} = getFlags()
-    const parsedUrl = GitUrlParse(remoteUrl)
-    parsedUrl.token = token
-    logger.verbose(`Parsed Remote URL: ${parsedUrl.toString('https')}`)
+    const {remoteName} = getFlags()
     logger.verbose(`Creating temp directory`)
     return createTempDirectory(TMP_PACKAGE_DIR).then(() => {
         const git = gitP(TMP_PACKAGE_DIR)
@@ -31,7 +27,7 @@ export function initializeGit(distBranchName: string, remoteUrl: string) {
             .silent(true)
             .init()
             .then(() => logger.verbose(`Checking out branch "${distBranchName}"`))
-            .then(() => git.addRemote(remoteName, parsedUrl.toString(token ? 'https' : protocol)))
+            .then(() => git.addRemote(remoteName, remoteUrl))
             .then(() =>
                 git
                     .fetch(remoteName, distBranchName)

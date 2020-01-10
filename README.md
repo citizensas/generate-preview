@@ -5,22 +5,36 @@ Get a preview from a git branch before publishing your npm package
 ## Install
 
 ```
-$ npm install --global generate-preview
+$ npm install -D generate-preview
 ```
 
-or just use it with `npx`
+or
+
+```
+$ yarn add -D generate-preview
+```
 
 ## Usage
 
-```
-$ npx generate-preview --help
+Just put the command in your package.json scripts section.
 
-Usage: npx generate-preview [options]
-
-Options:
-  -V, --version             output the version number
-  -r, --remote [name]       git remote name to use (default: "origin")
-  -p, --protocol [protocol] git protocol (i.e. git+ssh, https) (default: "git+ssh")
-  -h, --help                output usage information
-  --token                   git user token for remote authentication
+```metadata json
+{
+  ...
+  "scripts": {
+    "preview": "generate-preview"
+  },
+  ...
+}
 ```
+
+## Flags
+
+| Flag              | Default value | Description                                          |
+| :---------------- | :------------ | :--------------------------------------------------- |
+| `-r, --remote`    | `origin`      | Git remote name to use                               |
+| `-p, --protocole` | `git+ssh`     | Git protocol (i.e. git+ssh, https)                   |
+| `--token`         |               | Git user token for remote authentication             |
+| `-h, --help`      |               | Prints brief description of generate-preview command |
+| `-V, --version`   |               | Prints generate-preview current version installed    |
+| `--verbose`       |               | Prints verbose logs                                  |

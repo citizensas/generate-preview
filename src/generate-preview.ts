@@ -16,10 +16,10 @@ export function generatePreview(flags: IFlags) {
     setFlags(flags)
     Promise.all([getBranchName(), getRemoteUrl(), npmPack()])
         .then(([distBranchName, remoteUrl, packedFilename]) => {
-            const packedFilePath = path.join(MODULE_DIR, packedFilename)
-            return initializeGit(distBranchName, remoteUrl)
-                .then(() => unpack(packedFilename))
-                .then(() => pushToRemote(distBranchName))
+            const packedFilePath = path.join(MODULE_DIR, packedFilename!)
+            return initializeGit(distBranchName!, remoteUrl!)
+                .then(() => unpack(packedFilename!))
+                .then(() => pushToRemote(distBranchName!))
                 .then(() => {
                     return {
                         pathsToRemove: [TMP_DIR, packedFilePath],
