@@ -26,22 +26,22 @@
     "homepage": "https://github.com/citizensas/generate-preview#readme",
     "license": "MIT",
     "dependencies": {
-        "commander": "2.20.1",
+        "commander": "4.1.0",
         "git-url-parse": "11.1.2",
-        "rimraf": "2.7.1",
-        "simple-git": "1.126.0",
-        "tar": "4.4.13",
+        "rimraf": "3.0.0",
+        "simple-git": "1.129.0",
+        "tar": "5.0.5",
         "tempy": "0.3.0",
         "winston": "3.2.1"
     },
     "devDependencies": {
         "@types/git-url-parse": "^9.0.0",
-        "@types/node": "^12.7.11",
+        "@types/node": "^13.1.6",
         "@types/rimraf": "^2.0.2",
         "@types/tar": "^4.0.3",
-        "husky": "^3.0.9",
+        "husky": "^4.0.6",
         "prettier": "^1.15.2",
-        "pretty-quick": "^1.6.0",
+        "pretty-quick": "^2.0.1",
         "typescript": "^3.6.4"
     },
     "engines": {
