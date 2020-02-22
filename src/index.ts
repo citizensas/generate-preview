@@ -13,6 +13,7 @@ program
     .option('-p, --protocol [protocol]', 'git protocol (i.e. git+ssh, https)', REMOTE_URL_TYPES.GIT_SSH)
     .option('--verbose', 'prints higher level of logs')
     .option('--token [token]', 'git user token for remote authentication', '')
+    .option('--logFinalVersion', 'whether should log the final version into the generate-preview.log file')
 
 program.parse(process.argv)
 
@@ -22,5 +23,6 @@ logger.info(`Running generate-preview with version ${pkg.version}`)
 generatePreview({
     remoteName: program.remote,
     protocol: program.protocol,
-    token: program.token
+    token: program.token,
+    logFinalVersion: program.logFinalVersion
 })

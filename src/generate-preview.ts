@@ -1,6 +1,7 @@
 import {MODULE_DIR, TMP_DIR} from './constants'
 
 import * as path from 'path'
+import * as fs from 'fs'
 
 import {getBranchName} from './getBranchName'
 import {getRemoteUrl} from './getRemoteUrl'
@@ -11,6 +12,27 @@ import {pushToRemote} from './pushToRemote'
 import {cleanup} from './cleanup'
 import {IFlags, setFlags} from './cliFlags'
 import {logger} from './logger'
+
+const logFileName = 'generate-preview.log'
+
+const writeIntoLogFile = (content: string) => {
+    const path = logFileName
+    return new Promise((resolve, reject) => {
+        fs.open(path, 'w+', function(err) {
+            if (err) {
+                reject(err)
+            } else {
+                fs.writeFile(path, content, function(err) {
+                    if (err) {
+                        reject(err)
+                    } else {
+                        resolve()
+                    }
+                })
+            }
+        })
+    })
+}
 
 export function generatePreview(flags: IFlags) {
     setFlags(flags)
@@ -38,9 +60,14 @@ export function generatePreview(flags: IFlags) {
                 logger.info(
                     `Now you can install generated URL in you module using Yarn or NPM. Just run the following command.`
                 )
-                console.log(`npm install ${res.remoteUrl}#${res.distBranchName}`)
+                const version = `${res.remoteUrl}#${res.distBranchName}`
+                console.log(`npm install ${version}`)
                 console.log(' OR ')
-                console.log(`yarn add ${res.remoteUrl}#${res.distBranchName}`)
+                console.log(`yarn add ${version}`)
+                if (flags.logFinalVersion) {
+                    console.log(`Logging the final version into ${logFileName}...`)
+                    return writeIntoLogFile(version)
+                }
             })
         )
         .catch(err => {
