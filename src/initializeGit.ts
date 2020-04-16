@@ -6,7 +6,7 @@ import {logger} from './logger'
 
 function createTempDirectory(dir: string) {
     return new Promise<void>((resolve, reject) => {
-        fs.mkdir(dir, {recursive: true}, err => {
+        fs.mkdir(dir, {recursive: true}, (err) => {
             if (err) {
                 reject(err)
             } else {

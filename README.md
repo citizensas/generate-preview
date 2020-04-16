@@ -32,6 +32,7 @@ Just put the command in your package.json scripts section.
 
 | Flag              | Default value | Description                                          |
 | :---------------- | :------------ | :--------------------------------------------------- |
+| `-b, --branch`    | `origin`      | Specify a custom branch name to be pushed to your repository                               |
 | `-r, --remote`    | `origin`      | Git remote name to use                               |
 | `-p, --protocole` | `git+ssh`     | Git protocol (i.e. git+ssh, https)                   |
 | `--token`         |               | Git user token for remote authentication             |

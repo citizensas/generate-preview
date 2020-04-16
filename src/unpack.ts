@@ -7,9 +7,9 @@ export function unpack(packedFilename: string) {
     return tar
         .x({
             file: packedFilename,
-            cwd: TMP_DIR
+            cwd: TMP_DIR,
         })
-        .then(result => {
+        .then((result) => {
             logger.verbose(`Package "${PACKAGE_JSON.name}" unpacked in ${TMP_PACKAGE_DIR}`)
             return result
         })

@@ -11,14 +11,14 @@ export function getRemoteUrl() {
     logger.verbose('Getting remote url')
     return moduleGit
         .getRemotes(true)
-        .then(remotes => {
-            const remoteFound = remotes.find(remote => remote.name === remoteName)
+        .then((remotes) => {
+            const remoteFound = remotes.find((remote) => remote.name === remoteName)
             if (remoteFound) {
                 return remoteFound
             }
             throw `Remote "${remoteName}" not found.`
         })
-        .then(remote => {
+        .then((remote) => {
             const parsedUrl = GitUrlParse(remote.refs.fetch)
             let remoteUrl
             if (
