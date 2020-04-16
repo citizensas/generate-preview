@@ -24,7 +24,7 @@ export function generatePreview(flags: IFlags) {
                     return {
                         pathsToRemove: [TMP_DIR, packedFilePath],
                         remoteUrl: remoteUrl,
-                        distBranchName: distBranchName
+                        distBranchName: distBranchName,
                     }
                 })
                 .catch((err: unknown) =>
@@ -33,7 +33,7 @@ export function generatePreview(flags: IFlags) {
                     })
                 )
         })
-        .then(res =>
+        .then((res) =>
             cleanup(res.pathsToRemove).then(() => {
                 logger.info(
                     `Now you can install generated URL in you module using Yarn or NPM. Just run the following command.`
@@ -43,7 +43,7 @@ export function generatePreview(flags: IFlags) {
                 console.log(`yarn add ${res.remoteUrl}#${res.distBranchName}`)
             })
         )
-        .catch(err => {
+        .catch((err) => {
             logger.error(err)
             process.exit(1)
         })

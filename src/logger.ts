@@ -8,7 +8,7 @@ export function initLogger(level: TLoglevels) {
     logger = createLogger({
         level: level,
         format: format.cli(),
-        transports: [new transports.Console()]
+        transports: [new transports.Console()],
     })
 }
 

@@ -24,5 +24,5 @@ generatePreview({
     remoteName: program.remote,
     protocol: program.protocol,
     token: program.token,
-    branchName: program.branch
+    branchName: program.branch,
 })

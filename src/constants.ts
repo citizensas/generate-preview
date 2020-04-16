@@ -13,5 +13,5 @@ export const REMOTE_URL_TYPES = {
     FTP: 'ftp',
     FTPS: 'ftps',
     HTTPS: 'https',
-    HTTP: 'http'
+    HTTP: 'http',
 } as const

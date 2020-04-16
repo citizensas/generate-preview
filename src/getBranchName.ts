@@ -14,8 +14,8 @@ export function getBranchName() {
     }
     return moduleGit
         .branchLocal()
-        .then(branchSummary => branchSummary.current)
-        .then(branchName => {
+        .then((branchSummary) => branchSummary.current)
+        .then((branchName) => {
             logger.info(`Branch name: ${branchName}-dist`)
             return branchName + '-dist'
         })
