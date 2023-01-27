@@ -29,7 +29,7 @@
         "commander": "^5.0.0",
         "git-url-parse": "11.1.2",
         "rimraf": "^3.0.2",
-        "simple-git": "^1.132.0",
+        "simple-git": "^3.16.0",
         "tar": "^6.0.1",
         "tempy": "^0.3.0",
         "winston": "3.2.1"
